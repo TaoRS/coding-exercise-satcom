@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { Observable, Subscription, of } from 'rxjs';
+import { Observable, Subscription, debounce, of, timer } from 'rxjs';
 import { Customer } from 'src/app/models/customer';
 import { Product } from 'src/app/models/product';
 import { MockDataService } from 'src/app/services/mock-data.service';
@@ -36,9 +36,11 @@ export class ListComponent implements OnInit, OnDestroy {
   initForm(): void {
     this.filterForm = new FormControl();
     this.subscriptions.add(
-      this.filterForm.valueChanges.subscribe((filterValue) => {
-        this.onFilterChange(filterValue);
-      })
+      this.filterForm.valueChanges
+        .pipe(debounce(() => timer(200)))
+        .subscribe((filterValue) => {
+          this.onFilterChange(filterValue);
+        })
     );
   }
 
