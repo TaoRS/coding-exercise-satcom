@@ -1,6 +1,40 @@
 /* You can add global styles to this file, and also import other style files */
+:root {
+  --layout-gap: 0.5rem;
+
+  --color_hue: 210;
+
+  --color__app-bg: hsl(var(--color_hue), 5%, 85%);
+  --color__main-bg: hsl(var(--color_hue), 25%, 95%);
+  --color__viewer-bg: hsl(var(--color_hue), 30%, 90%);
+  --color__list-bg: var(--color__main-bg);
+  --color__font: hsl(var(--color_hue), 15%, 20%);
+
+  --color__border: hsl(var(--color_hue), 5%, 70%);
+
+  --color__list-el: var(--color__viewer-bg);
+  --color__list-el--hover: hsl(var(--color_hue), 100%, 90%);
+  --color__list-el--selected: hsl(var(--color_hue), 30%, 85%);
+
+  --color__shadow: hsl(var(--color_hue), 15%, 75%);
+}
 
 * {
-  font-family: 'Roboto Light', sans-serif;
+  font-family: "Roboto Light", sans-serif;
   box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--color__app-bg);
+  color: var(--color__font);
+}
+
+body {
+  margin: 0;
+  padding: 10px;
+  height: 100dvh;
+  width: 100dvw;
 }

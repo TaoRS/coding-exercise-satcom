@@ -1,9 +1,10 @@
 <div class="list-container">
+  <div class="filters">
+    <input type="text" [formControl]="filterForm" placeholder="Search element..."/>
+  </div>
   <ul class="list">
-    <div class="filters">
-      <input type="text" [formControl]="filterForm" placeholder="Search element"/>
-    </div>
-    <li class="list-element">
-    </li>
+    <button class="list-element" *ngFor="let data of data$ | async" (click)="onClick(data)" [class.selected]="isSelected(data)" role="listitem">
+      {{data.name}} <span *ngIf="isPremium(data)" class="list-premium" title="Premium">⭐</span>
+    </button>
   </ul>
 </div>
