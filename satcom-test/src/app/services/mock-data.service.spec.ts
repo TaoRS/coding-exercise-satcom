@@ -44,7 +44,7 @@ describe('MockDataService', () => {
 
       service.filterData(searchElement.name).subscribe((result) => {
         expect(result).toContain(searchElement);
-        const length = searchElementIsPremium ? 0 : 1 + premiumElementsCount;
+        const length = (searchElementIsPremium ? 0 : 1) + premiumElementsCount;
         expect(result.length).toBe(length);
       });
     });
